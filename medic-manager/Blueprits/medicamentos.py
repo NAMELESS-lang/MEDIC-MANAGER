@@ -14,7 +14,7 @@ class Medicamento:
         self._preco = preco
         self._dosagem = dosagem
         self._validade = validade
-        self._id_cadastro = id_cadastro
+        self._id_cadastror = id_cadastro
 
     @property
     def id_user_cadastro(self):
@@ -118,8 +118,8 @@ class Medicamento:
 
 
     @property
-    def id_cadastro(self):
-        return self._id_cadastro
+    def id_cadastror(self):
+        return self._id_cadastror
     
     def venda(self, quantidade):
         if quantidade <= self._quantidade_estoque:
