@@ -1,0 +1,7 @@
+root: admin
+senha: admin
+
+user: root
+senha: 1234
+
+nome do db: medic_manager
