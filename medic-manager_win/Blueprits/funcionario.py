@@ -1,4 +1,9 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, SubmitField, TelField,DateField
+from wtforms.validators import DataRequired
+
+
 
 funcionario_funcoes = Blueprint("funcionario_funcoes", __name__) #Digo que este meu script é um blueprint que vai conter as funções(rotas/views) relacionadas aos funcionários
 
@@ -63,17 +68,28 @@ class Funcionario:
             return
         raise ValueError
 
+class Formulario_cadastro(FlaskForm):
+    """
+    O validators serve para validar os campos, por exemplo, invalidar se o campo for nulo ou se as informações
+    preenchiadas são incorretas
+    """
+    nome = StringField('nome',validators=[DataRequired()]) 
+    # cpf = StringField('cpf', validators=[DataRequired()])
+    # data_nascimento = DateField('cpf', validators=[DataRequired()])
+    # telefone = TelField('telefone', validators=[DataRequired()])
+    # senha = PasswordField('senha',validators=[DataRequired()])
+
 
 # Associo rotas a este meu blueprint
 
-@funcionario_funcoes.route("/")
-def comece():
-    render_template("cadastro.html")
-
-@funcionario_funcoes.route("/cadastro")
+@funcionario_funcoes.route("/cadastro_funcionario_pagina")
 def cadastro():
-    return "<p>foi para cadastro</p>"
-
-
-# pessoa = Funcionario("Marilene",25434892000,"24/09/2018","(55)98133-4456","Olá")
-# pessoa.setar_identificador()
+    formulario = Formulario_cadastro()
+    return render_template("cadastro.html",formulario = formulario)
+    
+@funcionario_funcoes.route("/funcionario_cadastrar-se")
+def cadastrar_se():
+    formulario = Formulario_cadastro()
+    if formulario.validate_on_submit():
+        ...
+        

@@ -3,6 +3,8 @@
 
 {% block corpo %}
 <form action="/cadastro">
-    <button type="submit">Enviar</button>
+
+  {{formulario.nome.label}}
+  {{formulario.nome()}}
 </form>
 {% endblock %}

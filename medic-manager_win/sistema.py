@@ -13,4 +13,5 @@ sistema.register_blueprint(funcionario_funcoes) # Estou dizendo que um dos meus 
 sistema.register_blueprint(medicamento_funcoes)  # Estou dizendo que um dos meus sistemas de rotas fica no blueprint medicamento_funcoes
 sistema.register_blueprint(vendas_funcoes) # Estou dizendo que um dos meus sistemas de rotas fica no blueprint vendas_funcoes
 
+sistema.secret_key = "Matheus"
 sistema.run(debug = True)

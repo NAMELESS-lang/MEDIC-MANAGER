@@ -21,3 +21,6 @@ nome do db: medic_manager
 #     validade="31/12/2024",
 #     id_cadastro="MED001"
 # )
+
+# pessoa = Funcionario("Marilene",25434892000,"24/09/2018","(55)98133-4456","Olá")
+# pessoa.setar_identificador()
