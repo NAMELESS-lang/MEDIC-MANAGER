@@ -133,19 +133,3 @@ class Medicamento:
             self._quantidade_estoque -= quantidade
         else:
             return "Valor acima da quantidade em estoque"
-
-
-# medicamento1 = Medicamento(
-#     nome_comercial="Paracetamol",
-#     nome_generico="Paracetamol",
-#     codigo_identificação="123456",
-#     fabricante="Empresa Farmacêutica X",
-#     embalagem="Caixa",
-#     forma_farmaceutica="Comprimido",
-#     quantidade=10,
-#     concentracao="500mg",
-#     preco=10.99,
-#     dosagem="1 comprimido a cada 6 horas",
-#     validade="31/12/2024",
-#     id_cadastro="MED001"
-# )
