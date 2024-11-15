@@ -2,14 +2,23 @@
 from sqlalchemy import create_engine, Column, String, Integer, Float,Date,ForeignKey,VARCHAR
 from sqlalchemy.orm import sessionmaker, declarative_base
 
+
 banco_de_dados = create_engine("mysql+pymysql://root:1234@localhost:3306/medic_manager") #Crio a conexão com o bando de dados
 banco_de_dados.connect()
 Session = sessionmaker(bind=banco_de_dados) # Inicia uma sessão no banco de dados para modificá-lo (CRUD) 
-session = Session() 
+session_CRUD = Session() # Crio um objeto que vai realizar as operações de CRUD no banco de dados
 
 Tabelas = declarative_base() # É uma base que vou usar para criar as tabelas do banco de dados
     
 class funcionario(Tabelas):
+
+    """
+    Crio a tabela funcionário, usei as colunas cpf, telefone, identifcador como VARCHAR pelo fato de os valores podem iniciar com zeros
+    ou pela questão dos pontos e traço do cpf ou parênteses do DD de telefone
+
+    Defini como limite de 200 caracteres do VARCHAR da senha por causa da criptografia
+    """
+
     __tablename__ = "Funcionario"
 
     id = Column("id",Integer, primary_key=True, autoincrement = True)
@@ -48,5 +57,22 @@ class venda(Tabelas):
     quantidade_vendid = Column("quantidade_vendida",Integer)
     mes = Column("mes",Integer)
     id_funcionario = Column("id_funcionario",Integer,ForeignKey(funcionario.id))
+
+
+
+def buscar_por_identificador(identificador_valor):
+     usuario = session_CRUD.query(funcionario).filter_by(identificador = identificador_valor).first()
+     if usuario:
+        return usuario
+     else:
+         return 'Usuário não encontrado com o identificador específicado!'
+     
+def buscar_por_id(id):
+    usuario = session_CRUD.query(funcionario).filter_by(id = id).first()
+    if usuario:
+        return usuario
+    else:
+         return 'Usuário não encontrado com o identificador específicado!'
+
 
 Tabelas.metadata.create_all(bind=banco_de_dados)
