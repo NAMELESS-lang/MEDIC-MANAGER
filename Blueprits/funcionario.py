@@ -1,3 +1,4 @@
+
 import banco_de_dados as db
 from flask import Blueprint, render_template, request
 from flask_wtf import FlaskForm
@@ -62,6 +63,20 @@ class Formulario_cadastro(FlaskForm):
     Crie este formulário de cadastro usando o flask-WTF por que queria entender o funcionamento desta biblioteca, além de já vir com 
     recursos de segurança para os formulários
 
+    """
+    def setar_identificador(self):
+        import random
+        if self._identificador == "":
+            nums = [i for i in range(0,11)]
+            for numero in range(0,8):
+                numero = str(random.choice(nums))
+                self._identificador += numero
+            self._identificador = int(self._identificador)
+            return
+        raise ValueError
+
+class Formulario_cadastro(FlaskForm):
+    """
     O validators serve para validar os campos, por exemplo, invalidar se o campo for nulo ou se as informações
     preenchiadas são incorretas
     """
@@ -118,3 +133,4 @@ def login():
         return render_template('login.html', formulario = formulario)
     else:
        return '<p>Ok</p>'
+    

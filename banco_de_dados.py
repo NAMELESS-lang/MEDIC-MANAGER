@@ -1,3 +1,4 @@
+
 from sqlalchemy import create_engine, Column, String, Integer, Float,Date,ForeignKey,VARCHAR
 from sqlalchemy.orm import sessionmaker, declarative_base
 
@@ -18,6 +19,7 @@ class funcionario(Tabelas):
     telefone = Column("telefone", VARCHAR(15))
     identificador = Column("identicador", VARCHAR(8))
     senha = Column("senha", VARCHAR(200))
+
 
 
 class medicamento(Tabelas):
