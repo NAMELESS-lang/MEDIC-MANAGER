@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block titulo %}Cadastro {% endblock %}
+
+{% block corpo %}
+<form method="POST" action="/funcionario_cadastrar-se">
+  {{ formulario.csrf_token }}
+  {{formulario.nome.label}}
+  {{formulario.nome()}}
+  {{formulario.cpf.label}}
+  {{formulario.cpf()}}
+  {{formulario.data_nascimento.label}}
+  {{formulario.data_nascimento()}}
+  {{formulario.telefone.label}}
+  {{formulario.telefone()}}
+  {{formulario.senha.label}}
+  {{formulario.senha()}}
+  <button type="submit">Enviar</button>
+</form>
+{% endblock %}

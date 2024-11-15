@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block titulo %} Login {% endblock %}
+{% block corpo %}
+<form action="/" method="POST">
+    {{formulario.csrf_token}}
+    {{formulario.identificador.label}}
+    {{formulario.identificador()}}
+    {{formulario.senha.label}}
+    {{formulario.senha()}}
+    <button type="submit">Login</button>
+</form>
+{% endblock %}
